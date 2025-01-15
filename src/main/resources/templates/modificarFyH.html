@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Example :: Modify F y H</title> 
+</head>
+<body>
+    <h1>Modificar</h1>
+    <form th:action="@{/consultar/cambiarFecha/__${reserva.id}__}" method="post">
+        <div>
+            <label for="fecha">Seleccionar Fecha:</label>
+            <input type="date" name="dia" id="fecha" th:value="reserva.fecha"/>
+        </div>
+        <div>
+            <button type="submit" class="button">Buscar horario</button>
+        </div>
+    </form>
+    <br>
+      <a th:href="@{/index}">inicio</a>
+    <br>
+    <div th:if="${error != null}">
+        <div class="card-body">
+            <h5 class="card-tittle" style="color: red">Error</h5>
+            <p class="card-text" th:text="${error}" style="color: red"></p>
+        </div>
+    </div>
+</body>
+</html>

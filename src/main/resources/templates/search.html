@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Example :: Search</title> 
+</head>
+<body>
+    <h1>Consultar Reserva</h1>
+    <form th:action="@{/consultar/buscarReserva}" method="post">
+        <div>
+            <label for="id-reserva">Ingresar Id de la reserva:</label>
+            <input type="text" name="id" id="id-reserva"/>
+        </div>
+        <div>
+            <button type="submit" class="button">Buscar</button>
+        </div>
+    </form>
+    <br>
+      <a th:href="@{/index}">inicio</a>
+    <br>
+    <div th:if="${error != null}">
+        <div class="card-body">
+            <h5 class="card-tittle" style="color: red">Error</h5>
+            <p class="card-text" th:text="${error}" style="color: red"></p>
+        </div>
+    </div>
+</body>
+</html>

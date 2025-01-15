@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head><title>Modificar Datos del cliente</title></head>
+  <body>
+      <form th:action="@{/consultar/cambiarCliente/__${reserva.id}__/__${cliente.cedula}__}" method="post">
+        <div>
+          <h3>Datos del cliente</h3>
+          <br>
+            <label for="cedula">Cedula:</label>
+            <input type="text" name="cedula" id="cedula" th:value="${cliente.cedula}" th:disabled="true"/><br>
+          <br>
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre" th:value="${cliente.nombre}"/><br>
+          <br>
+            <label for="correo">Correo:</label>
+            <input type="text" name="correo" id="correo" th:value="${cliente.correo}"/><br>
+          <br>
+            <label for="celular">Celular:</label>
+            <input type="text" name="celular" id="celular" th:value="${cliente.celular}"/><br>
+        </div>
+        <br>
+            <button type="submit" class="button">Modificar</button>
+        <br>
+    </form>
+
+
+    <br>
+      <a th:href="@{/index}">Inicio</a>
+    <br>
+  </body>
+</html>

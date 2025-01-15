@@ -1,0 +1,41 @@
+<html xmlns:th="http://www.thymeleaf.org">
+  <head><title>Reservas de hoy</title></head>
+  <body>
+    <h1>Reservas del Dia</h1>
+    <h2 th:text="${#dates.format(fecha, 'dd/MM/yyyy')}"></h2>
+    
+    <div th:if="${reservas.isEmpty()}" th:text="${'No hay reservas este dia!'}"></div>
+
+    <table th:if="${not reservas.isEmpty()}">
+        <thead>
+            <tr>
+                <th>IdReserva</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Cliente</th>
+                <th>Cedula</th>
+                <th>Correo</th>
+                <th>Celular</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="reserva: ${reservas}">
+                <td th:text="${reserva.id}"></td>
+                <td th:text="${#dates.format(reserva.fecha, 'dd/MM/yyyy')}"></td>
+                <td th:text="${reserva.horario.hora}"></td>
+                <td th:text="${reserva.cliente.nombre}"></td>
+                <td th:text="${reserva.cliente.cedula}"></td>
+                <td th:text="${reserva.cliente.correo}"></td>
+                <td th:text="${reserva.cliente.celular}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+      <a th:href="@{/listar/lista}">Volver</a>
+    <br>
+    <br>
+      <a th:href="@{/index}">Inicio</a>
+    <br>
+  </body>
+</html>

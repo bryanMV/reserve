@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head><title>Example :: Reserve Application</title></head>
+  <body>
+    <h1>Example - Reserve Application</h1>
+    <p>This is my reserve.</p>
+    <br>
+      <form th:action="@{/reservar}" method="post">
+          <button type="submit" class="button">Reservar</button>
+      </form>
+    <br>
+    <br>
+      <form th:action="@{/consultar}" method="post">
+        <button type="submit" class="button">Consultar Reserva</button>
+      </form>
+    <br>
+    <br>
+      <form th:action="@{/listar}" method="post">
+      <button type="submit" class="button">Listar Reservas por Dia</button>
+    </form>
+    <br>
+    <div th:if="${exito != null}">
+      <div class="card-body">
+          <h5 class="card-tittle" style="color: green">Exito!</h5>
+          <p class="card-text" th:text="${exito}" style="color: green"></p>
+      </div>
+    </div>
+  </body>
+</html>

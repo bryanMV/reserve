@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Example :: List</title> 
+</head>
+<body>
+    <h1>Reservacion</h1>
+    <p>Esta es una consulta para el dueño de negocio, se implementaria un acceso al ingresar</p>
+    <form th:action="@{/listar/listarReservas}" method="post">
+        <div>
+            <label for="fecha">Seleccionar Fecha:</label>
+            <input type="date" name="dia" id="fecha"/>
+        </div>
+        <div>
+            <button type="submit" class="button">Listar</button>
+        </div>
+    </form>
+    <br>
+      <a th:href="@{/index}">inicio</a>
+    <br>
+    <div th:if="${error != null}">
+        <div class="card-body">
+            <h5 class="card-tittle" style="color: red">Error</h5>
+            <p class="card-text" th:text="${error}" style="color: red"></p>
+        </div>
+    </div>
+</body>
+</html>

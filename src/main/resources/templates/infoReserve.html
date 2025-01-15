@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head><title>Horarios disponibles</title></head>
+  <body>
+    <h1>Info Reserva</h1>
+    
+    <br>
+        <label for="id">Id Reserva:</label>
+        <input type="text" name="id" id="id" th:value="${reserva.id}" th:disabled="true"/><br>
+    <br>
+    <br>
+        <label for="fecha">Fecha de reserva:</label>
+        <input type="text" name="fecha" id="fecha" th:value="${reserva.fecha}" th:disabled="true"/><br>
+    <br>
+    <br>
+        <label for="hora">Hora de reserva:</label>
+        <input type="text" name="hora" id="hora" th:value="${reserva.horario.hora}" th:disabled="true"/><br>
+    <br>
+    <div>
+        <h3>Datos del cliente</h3>
+        <br>
+            <label for="cedula">Cedula:</label>
+            <input type="text" name="cedula" id="cedula" th:value="${reserva.cliente.cedula}" th:disabled="true"/><br>
+        <br>
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre" th:value="${reserva.cliente.nombre}" th:disabled="true"/><br>
+        <br>
+            <label for="correo">Correo:</label>
+            <input type="text" name="correo" id="correo" th:value="${reserva.cliente.correo}" th:disabled="true"/><br>
+        <br>
+            <label for="celular">Celular:</label>
+            <input type="text" name="celular" id="celular" th:value="${reserva.cliente.celular}" th:disabled="true"/><br>
+    </div>
+    <br>
+      <form th:action="@{/consultar/modificarFyH/__${reserva.id}__}" method="post">
+        <button type="submit" class="button">Modificar Fecha y Hora</button>
+      </form>
+    <br>
+    <br>
+      <form th:action="@{/consultar/modificarCliente/__${reserva.id}__/__${reserva.cliente.cedula}__}" method="post">
+        <button type="submit" class="button">Modificar Datos del Cliente</button>
+      </form>
+    <br>
+    <br>
+      <form th:action="@{/consultar/cancelar/__${reserva.id}__}" method="post">
+        <button type="submit" class="button">Cancelar Reserva</button>
+      </form>
+    <br>
+    <br>
+      <a th:href="@{/consultar/consulta}">Volver</a>
+    <br>
+    <br>
+      <a th:href="@{/index}">Inicio</a>
+    <br>
+  </body>
+</html>

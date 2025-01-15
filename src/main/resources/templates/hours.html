@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head><title>Horarios disponibles</title></head>
+  <body>
+    <h1>Reservas disponibles</h1>
+    <h2 th:text="${#dates.format(fecha, 'dd/MM/yyyy')}"></h2>
+    
+    <div th:if="${horarios.isEmpty()}" th:text="${'No hay reservas disponibles para este dia!'}"></div>
+
+    <table th:if="${not horarios.isEmpty()}">
+      <form th:action="@{/reservar/confirmarReserva}" method="post">
+        <div>
+            <br><select name="dia">
+              <option th:value="${#dates.format(fecha, 'yyyy-MM-dd')}" th:text="${#dates.format(fecha, 'dd/MM/yyyy')}"></option>
+            </select><br>
+            <h3>Horarios disponibles</h3>
+            <select name="horaSeleccionada">
+              <option th:each="horario: ${horarios}" th:value="${horario.hora}" th:text="${horario.hora}"></option>
+            </select>
+        </div>
+        <div>
+          <h3>Datos del cliente</h3>
+          <br>
+            <label for="cedula">Cedula:</label>
+            <input type="text" name="cedula" id="cedula"/><br>
+          <br>
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre"/><br>
+          <br>
+            <label for="correo">Correo:</label>
+            <input type="text" name="correo" id="correo"/><br>
+          <br>
+            <label for="celular">Celular:</label>
+            <input type="text" name="celular" id="celular"/><br>
+        </div>
+        <br>
+            <button type="submit" class="button">Reservar</button>
+        <br>
+    </form>
+      
+    </table>
+
+    <br>
+      <a th:href="@{/reservar/reserve}">Volver</a>
+    <br>
+    <br>
+      <a th:href="@{/index}">Inicio</a>
+    <br>
+  </body>
+</html>
